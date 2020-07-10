@@ -70,6 +70,13 @@
     line-height: 4em;
     text-align: center;
 }
+
+.page h5{
+    font-size: 1.5em;
+    line-height: 3em;
+    text-align: center;
+}
+
 .page p{
     font-size: 1.2em;
     line-height: 3em;
