@@ -75,3 +75,16 @@
     line-height: 3em;
     text-align: left;
 }
+
+.pageabout .aboutIcon{
+    text-align: left;
+    
+}
+
+.pages .aboutIcon span{
+    font-size: 1.5em;
+    line-height: 2em;
+    color: white;
+
+    text-align: left;
+}
