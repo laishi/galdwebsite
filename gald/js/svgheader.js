@@ -11,7 +11,7 @@ var menuserver = document.querySelector(".menuserver")
 var menuflow = document.querySelector(".menuflow")
 var menuabout = document.querySelector(".menuabout")
 
-var testnav = document.getElementById("testnav")
+var menus = document.querySelector(".menus")
 
 var strokeWidth = 3
 
@@ -35,59 +35,32 @@ function setNavPath(el) {
     // el.setAttribute("transform", "translate(0, " + -strokeWidth / 1 + ")");
 }
 
+function navToCurve(el, navSpace) {
 
-
-
-
-function flowangle(cx, cy, ex, ey) {
-    var dy = ey - cy;
-    var dx = ex - cx;
-    var theta = Math.atan2(dy, dx); // range (-PI, PI]
-    theta *= 180 / Math.PI; // rads to degs, range (-180, 180]
-    return theta;
-}
-
-
-var navmenus = document.querySelectorAll(".menu")
-
-
-
-
-
-function navToCurve(nav, prcnt, offset) {
-
-    var pathLength = navPath.getTotalLength()
-
-    prcnt = prcnt + offset
-
-
-    if (prcnt == 0.5) {
-        newprcnt = prcnt * pathLength;
-    } else {
-        newprcnt = (prcnt + 0.1) * pathLength;
+    if (!navSpace) {
+        navSpace = 1   //0.6~2
     }
 
 
 
-    var prcnt = prcnt * pathLength
-
-
-    pt = navPath.getPointAtLength(prcnt);
-    newpt = navPath.getPointAtLength(newprcnt);
-
-
-    pt.x = Math.round(pt.x);
-    pt.y = Math.round(pt.y);
-
-    newpt.x = Math.round(newpt.x);
-    newpt.y = Math.round(newpt.y);
-    var rotateangle = Math.round(flowangle(pt.x, pt.y, newpt.x, newpt.y))
-
-
-    // nav.css("transform", 'translate(' + pt.x + 'px, ' + pt.y + 'px)');
-    nav.style.webkitTransform = 'translate3d(' + pt.x + 'px,' + pt.y + 'px, 0)' + "rotate(" + rotateangle + "deg)";
-
+    var navs = el.children;
+    var navPathData = navPath.getAttribute("d")
+    for (var index = 0; index < navs.length; index++) {
+        navs[index].style.offsetPath = "path('" + navPathData + "')"
+        navs[index].style.offsetDistance = ((index * 10) * navSpace) + ((100 - (navs.length - 1) * navSpace * 10) / 2) + "%"
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -97,19 +70,7 @@ setviewbox(svgviewbox)
 setpath(curveBg)
 setNavPath(navPath)
 
-
-
-
-// Initialize
-
-var navspace = 0.1
-
-
-navToCurve(menuprojects, 0.5 - navspace * 2, 0)
-navToCurve(menuserver, 0.5 - navspace, 0)
-navToCurve(menuhome, 0.5, 0)
-navToCurve(menuflow, 0.5 + navspace, 0)
-navToCurve(menuabout, 0.5 + navspace * 2, 0)
+navToCurve(menus)
 
 
 
@@ -134,11 +95,7 @@ function reportWindowSize() {
     setNavPath(navPath)
 
 
-    navToCurve(menuprojects, 0.5 - navspace * 2, 0)
-    navToCurve(menuserver, 0.5 - navspace, 0)
-    navToCurve(menuhome, 0.5, 0)
-    navToCurve(menuflow, 0.5 + navspace, 0)
-    navToCurve(menuabout, 0.5 + navspace * 2, 0)
+    navToCurve(menus)
 
 
 }
@@ -159,11 +116,7 @@ window.addEventListener("scroll", function (e) {
     var menuOffsetScroll = Math.min(menuOffset + scrollPos / document.body.clientWidth, 0.3)
 
 
-    navToCurve(menuprojects, 0.5 - navspace * 2, -menuOffsetScroll)
-    navToCurve(menuserver, 0.5 - navspace, -menuOffsetScroll / 2)
-    navToCurve(menuhome, 0.5, 0)
-    navToCurve(menuflow, 0.5 + navspace, menuOffsetScroll / 2)
-    navToCurve(menuabout, 0.5 + navspace * 2, menuOffsetScroll)
+    navToCurve(menus, 1 + scrollPos / 500)
 
 
 
@@ -194,8 +147,7 @@ svgheader.addEventListener('mousemove', function (event) {
     poselevel01 = clipImg[2].getAttribute("x")
 
 
-    // console.log("mousex: " + event.offsetX )
-    // console.log(clipImg[3].getAttribute("x"))
+
 
     clipImg[0].setAttribute("x", -mousex / 4 + 300)
     clipImg[1].setAttribute("x", -mousex / 3 - 300)
@@ -229,16 +181,16 @@ svgheader.addEventListener('mousemove', function (event) {
 
 // pages
 
-
+navmenus = document.querySelectorAll(".menu")
 
 var pages = document.querySelectorAll(".page")
 
 
 function sourceclassname() {
-    
-    navmenus.forEach(function (item, index) {    
-        pages[index].className = "page homepage"    
-        
+
+    navmenus.forEach(function (item, index) {
+        pages[index].className = "page homepage"
+
     })
 }
 
@@ -249,12 +201,12 @@ function menuRipple() {
 
 
         if (item.classList.contains("menuRipple")) {
-    
+
             item.classList.toggle("menuRipple");
         }
-    
-    
-    })   
+
+
+    })
 }
 
 
@@ -267,54 +219,15 @@ navmenus.forEach(function (item, index) {
 
 
 
-  
-    
+
+
     item.addEventListener('click', function (el) {
 
         sourceclassname()
-        
+
         menuRipple()
         item.classList.toggle("menuRipple");
         pages[index].classList.toggle("pagedown");
-
-        
-
-
-        if (item.classList.contains("menuprojects")) {
-            maskimghome.style.display = "none"
-            maskimgpage.style.display = "block"
-            maskimgpage.children[0].setAttribute("xlink:href", "img/Skyscrapers.png")
-        }
-
-        if (item.classList.contains("menuserver")) {
-            maskimghome.style.display = "none"
-            maskimgpage.style.display = "block"
-            maskimgpage.children[0].setAttribute("xlink:href", "img/djrmgy.jpg")
-        }
-
-        if (item.classList.contains("menuhome")) {
-            maskimghome.style.display = "none"
-            maskimgpage.style.display = "block"
-            maskimgpage.children[0].setAttribute("xlink:href", "img/ta.jpg")
-        }
-
-        if (item.classList.contains("menuflow")) {
-            maskimghome.style.display = "none"
-            maskimgpage.style.display = "block"
-            maskimgpage.children[0].setAttribute("xlink:href", "img/Lights.png")
-        }
-
-        if (item.classList.contains("menuabout")) {
-            maskimghome.style.display = "none"
-            maskimgpage.style.display = "block"
-            maskimgpage.children[0].setAttribute("xlink:href", "img/eyessvg.png")
-        }
-
-
-
-
-
-        console.log("menuitem: " + item)
 
     })
 })
