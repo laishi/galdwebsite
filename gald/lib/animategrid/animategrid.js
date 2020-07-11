@@ -2,35 +2,50 @@
 
 
 const grid = document.querySelector(".grid");
-const card = document.querySelectorAll(".card");
+const cards = document.querySelectorAll(".card");
 
 
-function cardinit() {
-  card.forEach(function (item, index) {
 
-    if (item.classList.contains("card--expanded")) {
-      item.classList.remove("card--expanded");
-    }
-  })
-}
 
-var precard
+
+
+
+
+
+
+
+
+
+
+var preCard
 grid.addEventListener("click", ev => {
 
-  // cardinit()
+  if (preCard) {
+    console.log(preCard)
+    preCard.classList.remove("card--expanded");
+  }
+
+
   let target = ev.target;
   while (target.tagName !== "HTML") {
     if (target.classList.contains("card") || target.classList.contains("card--expanded")) {
       target.classList.toggle("card--expanded");
-      // return;
+      preCard = target
+      return;
     }
 
     target = target.parentElement;
-
-    precard = target.parentElement;
-
+    
   }
+
+
+
 });
+
+
+
+
+
 
 
 Promise.all([...Array(10).keys()]).then(() => {
@@ -46,11 +61,38 @@ Promise.all([...Array(10).keys()]).then(() => {
 
 
 
-window.addEventListener("scroll", function (e) {
 
-  cardinit()
 
-})
+
+
+
+
+
+
+
+
+
+
+// window.addEventListener("scroll", function (e) {
+
+//   for (let index = 0; index < card.length; index++) {
+//     if (card[index].classList.contains("card--expanded")) {
+//       card[index].classList.remove("card--expanded");
+//     }
+    
+//   }
+
+
+
+// })
+
+
+
+
+
+
+
+
 
 
 // RESIZE WINDOW VIEWBOX

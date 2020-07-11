@@ -102,7 +102,7 @@ function reportWindowSize() {
 
 
 
-
+var pageTip = document.querySelector(".pageTip")
 // onscroll
 
 var menuOffset = 0;
@@ -117,6 +117,10 @@ window.addEventListener("scroll", function (e) {
 
 
     navToCurve(menus, 1 + scrollPos / 500)
+
+
+    pageTip.style.top = Math.min(scrollPos*2, window.innerHeight/2 - pageTip.clientHeight) + "px"
+
 
 
 
@@ -233,11 +237,17 @@ navmenus.forEach(function (item, index) {
 })
 
 
+var cardText = document.querySelectorAll(".cardText")
 
 
 
 
 
+// for (var index = 0; index < cardText.length; index ++ ) {
+
+//     var bgCol =  "rgba(" + (Math.random(255) * 255) + ", " +  (Math.random(255) * 255) + ", " + (Math.random(255) * 255) + ", 0.5)"
+//     cardText[index].style.backgroundColor = bgCol;
+// }
 
 
 

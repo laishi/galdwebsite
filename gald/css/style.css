@@ -38,9 +38,9 @@ body{
     width: 100px;
     height: 100px;
 
-    border: 3px solid rgba(150, 0, 0, 1.0);
+    border: 3px solid rgba(200, 0, 0, 1.0);
     border-radius: 100%;
-    background-color: rgba(150, 0, 0, 1.0);
+    background-color: rgba(200, 0, 0, 1.0);
     cursor: pointer;
     z-index: 1;
     transition: background-color 1s;
@@ -94,16 +94,14 @@ body{
     color: rgb(255, 255, 255);
 }
 
+.pageLogo{
+    width: 168px;
+    height: 168px;
+}
 
 
-/* .menuhome {
-    width: 120px;
-    height: 120px;
-    top:-60px;
-    left: -60px;
-    border-radius: 100%;
-    background: blue;
-} */
+
+
 
 .menuIcon{
     font-size: 2em;
@@ -131,29 +129,53 @@ body{
     /* box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12); */
 }
 
-/* .card:hover .card__img{
-    background-color: rgb(155, 3, 3);
-    -webkit-transform: scale(1.2);
-    transform: scale(1.2);
-} */
+
+
+.cardSlider{
+    position: relative;
+}
 
 .card img{
     position: relative;
     width: 100%;
     transform: scale(1.1);
-
 }
 
-.card:hover img{
-    position: relative;
+.cardSlider .card__img{
+    position: absolute;
     width: 100%;
-    transform: scale(1.2);
+    height: auto;
+    background-color: tomato;
 
+    top: 0;
+    left: 0;
+    animation: cardImgSlider 10s infinite;
+    opacity: 0;
 }
 
 
 
 
+  
+@keyframes cardImgSlider {
+    60% {
+      opacity: 1.0;
+    }
+    70% {
+      opacity: 0.0;
+    }
+}
+
+
+
+  .card img:nth-child(1) {
+    animation-delay: 0s;
+  }
+  
+  .card img:nth-child(2) {
+    animation-delay: 5s;
+  }
+  
 
 
 .card h3 {
@@ -163,15 +185,36 @@ body{
     font-weight: 100;
 }
 
+
+
+
+
+
+
+
 .w80{
     width: 80%;
     margin: 0 auto;
 }
-.w430{
+.w50{
     padding: 2em;
     background-color: rgb(150, 0, 0);
     border-radius: 10px;
-    width: 430px;
+    width: 50%;
     margin: 0 auto;
     box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+}
+
+
+.wxewm{
+    width: 100%;
+    max-width: 256px;
+}
+
+.iconfont {
+    font-family: "iconfont" !important;
+    font-size: 0.8em;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
