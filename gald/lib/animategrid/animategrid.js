@@ -125,18 +125,19 @@ Promise.all([...Array(10).keys()]).then(() => {
 
 
 
-window.addEventListener("scroll", function (e) {
+// window.addEventListener("scroll", function (e) {
 
-  // var cadExpanded = document.querySelector(".card--expanded")
-
-
-  // if (cadExpanded) {
-  //   console.log("thisCard")
-  //   cadExpanded.classList.toggle('card--expanded')
-  // }
+//   var cadExpanded = document.querySelector(".card--expanded")
 
 
-})
+//   if (cadExpanded) {
+//     console.log("thisCard")
+//     cadExpanded.classList.toggle('card--expanded')
+//     cadExpanded.removeAttribute("style")
+//   }
+
+
+// })
 
 
 

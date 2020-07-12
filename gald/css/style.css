@@ -33,9 +33,6 @@ body{
     top: 0px;
 }
 
-
-
-
 .menu {
     position: absolute;
     width: 100px;
@@ -46,46 +43,10 @@ body{
     background-color: rgba(200, 0, 0, 1.0);
     cursor: pointer;
     z-index: 1;
-    transition: background-color 1s;
     /* transform:translate(-50%,-50%); */
     /* box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12); */
 }
 
-.menuRipple {
-    transform:translate(-0%,-0%);
-}
-
-
-.menuRipple:before{
-    position:absolute;
-    content:'';
-    border:3px solid rgba(200, 0, 0, 1.0);
-    left:0;
-    right:0;
-    bottom:0;
-    top:0;
-    border-radius:50%;
-    animation:animate 2s linear infinite;
- }
-.menuRipple:after{
-    position:absolute;
-    content:'';
-    border:3px solid rgba(200, 0, 0, 1.0);
-    left:0;
-    right:0;
-    bottom:0;
-    top:0;
-    border-radius:50%;
-    animation:animate 2s 1s linear infinite;
-}
-  
-  @keyframes animate{
-    100%{
-      transform:scale(1.5);
-      opacity:0
-    }
-  }
-  
 
 
 .menu:hover {
@@ -120,7 +81,6 @@ body{
     text-align: center;
     color: rgb(200, 200, 200);
     font-weight: 500;
-    transition: color 1s;
 }
 
 
@@ -129,62 +89,55 @@ body{
 .card{
     background-color: rgb(168, 168, 168);
     border-radius: 10px;
-    transition: scale 1s;
+    
     /* box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12); */
-}
-
-
-.card:hover img{
-    transform: scale(1.8);
 }
 
 
 
 .cardSlider{
     position: relative;
+    height: 100%;
+
 }
 
-.card img{
-    position: relative;
-    width: 100%;
-    transform: scale(1.1);
-}
+
 
 .cardSlider .card__img{
     position: absolute;
     width: 100%;
-    height: auto;
-    background-color: tomato;
-
     top: 0;
     left: 0;
-    animation: cardImgSlider 10s infinite;
-    opacity: 0;
+    background-color: rgb(66, 66, 66);
+    opacity: 1;
+    top: 0;
+    transition: transform 2s ease-in-out, opacity 2s;
 }
 
 
 
+.card:hover .card__img:nth-child(2) {
+    opacity: 0;
+    transform: scale(1.5);
+}
+
+.card:hover .card__img:nth-child(1) {    
+    opacity: 1;
+    transform: scale(1.1);
+}
 
   
-@keyframes cardImgSlider {
-    60% {
-      opacity: 1.0;
-    }
-    70% {
-      opacity: 0.0;
-    }
-}
 
 
 
-  .card img:nth-child(1) {
+  /* .card img:nth-child(1) {
     animation-delay: 0s;
   }
   
   .card img:nth-child(2) {
     animation-delay: 5s;
   }
-  
+   */
 
 
 .card h3 {

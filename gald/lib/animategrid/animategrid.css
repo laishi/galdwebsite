@@ -19,7 +19,7 @@
 .card--expanded {
   grid-column: span 3;
   grid-row: span 3;
-  background-color: chocolate;
+  background-color: rgb(38, 38, 38);
   box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
 }
 .card--expanded .card__img {
@@ -27,7 +27,7 @@
           transform: scale(1.2);
 }
 
-@-webkit-keyframes fadeIn {
+/* @-webkit-keyframes fadeIn {
   0% {
     opacity: 0;
     -webkit-transform: scale(0);
@@ -58,7 +58,7 @@
           animation: fadeIn 0.4s forwards;
   -webkit-animation-delay: 0.3s;
           animation-delay: 0.3s;
-}
+} */
 
 .card {
   cursor: pointer;
@@ -66,9 +66,9 @@
   position: relative;
 }
 
-.card__img {
-  -webkit-transition: -webkit-transform 1s;
-  transition: -webkit-transform 1s;
-  transition: transform 1s;
-  transition: transform 1s, -webkit-transform 1s;
-}
+/* .card__img {
+  -webkit-transition: -webkit-transform 2s;
+  transition: -webkit-transform 2s;
+  transition: transform 2s;
+  transition: transform 2s, -webkit-transform 2s;
+} */

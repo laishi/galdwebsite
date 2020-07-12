@@ -107,6 +107,49 @@ var pageTip = document.querySelector(".pageTip")
 
 var menuOffset = 0;
 
+
+
+
+
+
+
+// 判断浏览器信息
+
+// "5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.25 Safari/537.36 Core/1.70.3766.400 QQBrowser/10.6.4163.400"
+// "5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.98 Safari/537.36 LBBROWSER"
+
+// "5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36"  // 360
+
+
+// "5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36 Edg/83.0.478.61"
+// "5.0 (Windows NT 10.0; WOW64; Trident/7.0; Touch; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; Tablet PC 2.0; rv:11.0) like Gecko"
+// "5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36"
+
+
+
+// var nVer = navigator.appVersion;
+// var nAgt = navigator.userAgent;
+// var browserName  = navigator.appName;
+// var fullVersion  = ''+parseFloat(navigator.appVersion); 
+// var majorVersion = parseInt(navigator.appVersion,10);
+// var nameOffset,verOffset,ix;
+
+// // In Opera, the true version is after "Opera" or after "Version"
+// if ((verOffset=nAgt.indexOf("QQBrowser"))!=-1) {
+//    browserName = "QQBrowser";
+//    console.log(browserName)
+// }
+
+// var browers = ["chrome", "edge", "360", "QQ", "baidu", "liebao"]
+
+
+
+
+
+
+
+
+
 window.addEventListener("scroll", function (e) {
 
     var scrollPos = window.scrollY || window.pageYOffset // pageYOffset for ie
@@ -116,10 +159,16 @@ window.addEventListener("scroll", function (e) {
     var menuOffsetScroll = Math.min(menuOffset + scrollPos / document.body.clientWidth, 0.3)
 
 
-    navToCurve(menus, 1 + scrollPos / 500)
 
 
-    pageTip.style.top = Math.min(scrollPos*2, window.innerHeight/2 - pageTip.clientHeight) + "px"
+
+
+
+
+
+
+    // MENU 间距
+
 
 
 
@@ -130,7 +179,9 @@ window.addEventListener("scroll", function (e) {
 
         curveBg.setAttribute("d", scrollPath)
         navPath.setAttribute("d", scrollPath.split(" V")[0])
-        // navPath.setAttribute("transform", "translate(0, " + -strokeWidth / 2 + ")");
+
+        navToCurve(menus, 1 + scrollPos / 500)
+        pageTip.style.top = Math.min(scrollPos*2, window.innerHeight/2 - pageTip.clientHeight) + "px"
     }
 
 })
@@ -177,7 +228,7 @@ svgheader.addEventListener('mousemove', function (event) {
 
 
 
-});
+},false);
 
 
 
@@ -190,54 +241,44 @@ navmenus = document.querySelectorAll(".menu")
 var pages = document.querySelectorAll(".page")
 
 
-function sourceclassname() {
+
+function togglePageDown() {
+
+
 
     navmenus.forEach(function (item, index) {
-        pages[index].className = "page homepage"
 
-    })
-}
-
-
-
-function menuRipple() {
-    navmenus.forEach(function (item, index) {
-
-
-        if (item.classList.contains("menuRipple")) {
-
-            item.classList.toggle("menuRipple");
+        if (pages[index].classList.contains("pagedown")) {
+            pages[index].classList.toggle("pagedown")            
         }
 
+        pages[index].addEventListener('transitionend', pagetransitionend)
+
 
     })
 }
+
+function pagetransitionend() {
+    console.log("pagetransitionend")
+}
+
 
 
 var maskimghome = document.querySelector(".maskimghome")
 var maskimgpage = document.querySelector(".maskimgpage")
 
 
-
 navmenus.forEach(function (item, index) {
 
-
-
-
-
     item.addEventListener('click', function (el) {
-
-        sourceclassname()
-
-        menuRipple()
-        item.classList.toggle("menuRipple");
+        console.log("clike: " + index)
+        togglePageDown()
         pages[index].classList.toggle("pagedown");
-
     })
+
 })
 
 
-var cardText = document.querySelectorAll(".cardText")
 
 
 
@@ -261,3 +302,13 @@ function pageend(params) {
 //     // Toggle 'active' class
 //     this.classList.toggle('active')		
 // }	
+
+
+
+// var cards = document.querySelectorAll(".card")
+
+
+
+
+
+

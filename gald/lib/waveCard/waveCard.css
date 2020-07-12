@@ -82,7 +82,7 @@ position: relative;
 }
 
 ::selection {
-    background-color: salmon;
+    background-color: rgb(38, 38, 38);
     color: white;
 }
 
