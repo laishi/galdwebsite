@@ -243,11 +243,21 @@ var cardText = document.querySelectorAll(".cardText")
 
 
 
-// for (var index = 0; index < cardText.length; index ++ ) {
+// For each panel
+pages.forEach(page => {
+	// On click, toggle open
+	// page.addEventListener('click', toggleOpen)
+	// After open is done toggling, toggle active
+	page.addEventListener('transitionend', pageend)
+})
 
-//     var bgCol =  "rgba(" + (Math.random(255) * 255) + ", " +  (Math.random(255) * 255) + ", " + (Math.random(255) * 255) + ", 0.5)"
-//     cardText[index].style.backgroundColor = bgCol;
-// }
 
+function pageend(params) {
+    // console.log("event.propertyName: " + event.propertyName)
+    // console.log(this.children)
+}
 
-
+// if (event.propertyName.includes('transform')) {
+//     // Toggle 'active' class
+//     this.classList.toggle('active')		
+// }	

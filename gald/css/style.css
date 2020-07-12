@@ -33,6 +33,9 @@ body{
     top: 0px;
 }
 
+
+
+
 .menu {
     position: absolute;
     width: 100px;
@@ -126,7 +129,13 @@ body{
 .card{
     background-color: rgb(168, 168, 168);
     border-radius: 10px;
+    transition: scale 1s;
     /* box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12); */
+}
+
+
+.card:hover img{
+    transform: scale(1.8);
 }
 
 

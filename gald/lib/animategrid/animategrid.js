@@ -2,45 +2,97 @@
 
 
 const grid = document.querySelector(".grid");
+// const cards = document.querySelectorAll(".card");
+
+
+
+
+// Get all panels
 const cards = document.querySelectorAll(".card");
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 var preCard
-grid.addEventListener("click", ev => {
+var thisCard
 
-  if (preCard) {
-    console.log(preCard)
-    preCard.classList.remove("card--expanded");
-  }
+var clickNum = 0
 
+function toggleOpen() {
 
-  let target = ev.target;
-  while (target.tagName !== "HTML") {
-    if (target.classList.contains("card") || target.classList.contains("card--expanded")) {
-      target.classList.toggle("card--expanded");
-      preCard = target
-      return;
+  if (this.classList.contains("card--expanded")) {    
+    this.classList.remove('card--expanded')  
+  }else{
+    this.classList.add('card--expanded')
+    if (preCard) {
+      console.log("preCard")
+      preCard.classList.remove('card--expanded')
     }
+    preCard = this
+  }
 
-    target = target.parentElement;
-    
+  thisCard = this
+
+}
+
+function toggleActive(event) {
+	// If flex transition has ended
+	if (event.propertyName.includes('transform')) {
+		// Toggle 'active' class
   }
 
 
 
-});
+
+  console.log(event.propertyName)
+}
+
+
+
+cards.forEach(panel => {
+	// On click, toggle open
+	panel.addEventListener('click', toggleOpen)
+	// After open is done toggling, toggle active
+	panel.addEventListener('transitionend', toggleActive)
+})
+
+
+
+
+
+
+
+
+
+// var preCard
+// var thisCard
+// grid.addEventListener("click", ev => {
+
+//   if (preCard) {
+//     console.log(preCard)
+//     preCard.classList.remove("card--expanded");
+//   }
+
+
+//   let target = ev.target;
+//   while (target.tagName !== "HTML") {
+//     if (target.classList.contains("card") || target.classList.contains("card--expanded")) {
+//       target.classList.toggle("card--expanded");
+//       thisCard = target
+//       preCard = target
+//       return;
+//     }
+
+//     target = target.parentElement;
+    
+//   }
+
+
+  
+// });
+
+
+
+
+
+
 
 
 
@@ -50,12 +102,12 @@ grid.addEventListener("click", ev => {
 
 Promise.all([...Array(10).keys()]).then(() => {
   animateCSSGrid.wrapGrid(grid, {
-    duration: 350,
+    duration: 250,
     stagger: 10,
-    onStart: elements =>
-      console.log(`started animation for ${elements.length} elements`),
-    onEnd: elements =>
-      console.log(`finished animation for ${elements.length} elements`)
+    // onStart: elements =>
+    //   console.log(`started animation for ${elements.length} elements`),
+    // onEnd: elements =>
+    //   console.log(`finished animation for ${elements.length} elements`)
   });
 });
 
@@ -73,18 +125,18 @@ Promise.all([...Array(10).keys()]).then(() => {
 
 
 
-// window.addEventListener("scroll", function (e) {
+window.addEventListener("scroll", function (e) {
 
-//   for (let index = 0; index < card.length; index++) {
-//     if (card[index].classList.contains("card--expanded")) {
-//       card[index].classList.remove("card--expanded");
-//     }
-    
-//   }
+  // var cadExpanded = document.querySelector(".card--expanded")
 
 
+  // if (cadExpanded) {
+  //   console.log("thisCard")
+  //   cadExpanded.classList.toggle('card--expanded')
+  // }
 
-// })
+
+})
 
 
 
