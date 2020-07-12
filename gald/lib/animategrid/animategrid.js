@@ -130,14 +130,14 @@ window.addEventListener("scroll", function (e) {
 
   var cadExpanded = document.querySelector(".card--expanded")
 
-  console.log(cadExpanded)
+  // console.log(cadExpanded)
   
   
   if (cadExpanded && transitionend) {
-    cadExpanded.classList.toggle('card--expanded') 
+    cadExpanded.classList.remove('card--expanded') 
     cadExpanded = null
     transitionend = false
-    console.log("END cadExpanded")
+    // console.log("END cadExpanded")
   }
 
 
