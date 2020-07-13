@@ -219,12 +219,20 @@ var maskimghome = document.querySelector(".maskimghome")
 var maskimgpage = document.querySelector(".maskimgpage")
 
 
+
+
+
+
+
 navmenus.forEach(function (item, index) {
 
     item.addEventListener('click', function (event) {
         togglePageDown()
+
         pages[index].classList.toggle("pagedown");
     })
+
+
     item.addEventListener('mouseover', function (event) {
         // console.log(item.classList)
     },false)

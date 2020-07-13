@@ -44,10 +44,13 @@ body{
     cursor: pointer;
     z-index: 1;
     overflow: hidden;
-    transition: width 1s, height 1s, font-size 1s ease-in-out;
+    font-size: 1em;
+    transition: width 0.3s, height 0.6s ease-in-out;
     /* transform:translate(-50%,-50%); */
     /* box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12); */
 }
+
+
 
 
 
@@ -60,18 +63,21 @@ body{
 
 
 .menu:hover .menuIcon{
-    font-size: 3em;
+    font-size: 2.4rem;
+    color: rgb(255, 255, 255);
 }
 
 .menu:hover h3{
+    color: rgb(255, 255, 255);
     
 } 
 
 
 .menuIcon{
-    font-size: 2em;
+    font-size: 2.0em;
     color: rgb(200, 200, 200);
     text-align: center;
+    transition: font-size 0.3s, color 0.3s ease-in-out;
 }
 
 .menus h3{
@@ -81,6 +87,7 @@ body{
     text-align: center;
     color: rgb(200, 200, 200);
     font-weight: 500;
+    transition: font-size 0.3s, color 0.3s ease-in-out;
 }
 
 
