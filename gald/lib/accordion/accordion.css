@@ -1,6 +1,8 @@
 #accordions {
     height: 100%;
     padding: 0px;
+    height: 50vh;
+    overflow: hidden;
     position: relative;
 }
 
@@ -15,7 +17,18 @@
     text-align: center;
     overflow: hidden;
     width: calc(100%/7);
+    transition: width 1s ease-in-out;
 }
+
+
+.accordion:hover {
+    width: calc(100%/3);
+}
+
+
+
+
+
 
 .pages .accordion p{
     text-align: center;
