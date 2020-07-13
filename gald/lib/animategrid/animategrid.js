@@ -24,7 +24,10 @@ function toggleOpen() {
     this.classList.toggle('card--expanded')   
     this.children[0].children[1].style.backgroundColor = "rgba(222, 222, 222, 0.3)"
     this.children[0].children[1].style.color = "rgba(22, 22, 22, 1.0)"
-    transitionend = false
+    // transitionend = false
+    // transitionend ? false:true
+    transitionend = transitionend ? false : true;
+    console.log("clicked " + transitionend);
   }
 
 
@@ -35,8 +38,11 @@ function toggleOpen() {
 function toggleActive(event) {
 	// If flex transition has ended
 	if (event.propertyName.includes('transform')) {
-    // Toggle 'active' class    
+    // Toggle 'active' class
     transitionend = true
+    
+    console.log('Transition true');
+
   }
 
 
@@ -50,6 +56,10 @@ function toggleActive(event) {
 cards.forEach(card => {
 	// On click, toggle open
 	card.addEventListener('click', toggleOpen)
+	card.addEventListener('mousemove', function () {
+    transitionend = true
+    console.log(transitionend)
+  })
 	// After open is done toggling, toggle active
 	card.addEventListener('transitionend', toggleActive)
 })
@@ -117,29 +127,24 @@ Promise.all([...Array(10).keys()]).then(() => {
 
 
 
-
-
-
-
-
-
-
-
-
 window.addEventListener("scroll", function (e) {
+
+  var scrollPos = window.scrollY
+
 
   var cadExpanded = document.querySelector(".card--expanded")
 
-  // console.log(cadExpanded)
+  console.log(cadExpanded)
+  console.log(transitionend)
   
   
+
   if (cadExpanded && transitionend) {
     cadExpanded.classList.remove('card--expanded') 
     cadExpanded = null
     transitionend = false
     // console.log("END cadExpanded")
   }
-
 
 })
 
