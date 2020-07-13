@@ -16,7 +16,7 @@ var thisCard
 var clickNum = 0
 
 
-var transitionend = false
+var transitionend = true
 
 function toggleOpen() {
   if (transitionend) {
@@ -24,9 +24,7 @@ function toggleOpen() {
     this.classList.toggle('card--expanded')   
     this.children[0].children[1].style.backgroundColor = "rgba(222, 222, 222, 0.3)"
     this.children[0].children[1].style.color = "rgba(22, 22, 22, 1.0)"
-    // transitionend = false
-    // transitionend ? false:true
-    transitionend = transitionend ? false : true;
+    transitionend = false
     console.log("clicked " + transitionend);
   }
 
@@ -36,19 +34,10 @@ function toggleOpen() {
 
 
 function toggleActive(event) {
-	// If flex transition has ended
 	if (event.propertyName.includes('transform')) {
-    // Toggle 'active' class
-    transitionend = true
     
-    console.log('Transition true');
+  } 
 
-  }
-
-
-
-
-  // console.log(event.propertyName)
 }
 
 
@@ -56,16 +45,42 @@ function toggleActive(event) {
 cards.forEach(card => {
 	// On click, toggle open
 	card.addEventListener('click', toggleOpen)
-	card.addEventListener('mousemove', function () {
-    transitionend = true
-    console.log(transitionend)
-  })
-	// After open is done toggling, toggle active
 	card.addEventListener('transitionend', toggleActive)
 })
 
 
 
+
+
+Promise.all([...Array(10).keys()]).then(() => {
+  animateCSSGrid.wrapGrid(grid, {
+    duration: 250,
+    stagger: 10,
+    onStart: elements =>
+      // console.log(`started animation for ${elements.length} elements`),
+      console.log("finished started " + transitionend),
+    onEnd: function (elements) {
+      // console.log(`finished animation for ${elements.length} elements`)
+      transitionend = true
+      console.log("finished elements " + transitionend)
+
+      
+    }
+      
+  });
+});
+
+
+window.addEventListener("scroll", function (e) {
+
+  var cadExpanded = document.querySelector(".card--expanded")
+  if (cadExpanded && transitionend) {
+    cadExpanded.classList.remove('card--expanded') 
+    cadExpanded = null
+    transitionend = false
+    console.log("END scroll:" + transitionend)
+  }
+})
 
 
 
@@ -111,42 +126,10 @@ cards.forEach(card => {
 
 
 
-Promise.all([...Array(10).keys()]).then(() => {
-  animateCSSGrid.wrapGrid(grid, {
-    duration: 250,
-    stagger: 10,
-    // onStart: elements =>
-    //   console.log(`started animation for ${elements.length} elements`),
-    // onEnd: elements =>
-    //   console.log(`finished animation for ${elements.length} elements`)
-  });
-});
 
 
 
 
-
-
-window.addEventListener("scroll", function (e) {
-
-  var scrollPos = window.scrollY
-
-
-  var cadExpanded = document.querySelector(".card--expanded")
-
-  console.log(cadExpanded)
-  console.log(transitionend)
-  
-  
-
-  if (cadExpanded && transitionend) {
-    cadExpanded.classList.remove('card--expanded') 
-    cadExpanded = null
-    transitionend = false
-    // console.log("END cadExpanded")
-  }
-
-})
 
 
 
