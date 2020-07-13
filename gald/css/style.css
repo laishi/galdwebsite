@@ -35,14 +35,16 @@ body{
 
 .menu {
     position: absolute;
-    width: 100px;
-    height: 100px;
+    width: 6em;
+    height: 6em;
 
-    border: 3px solid rgba(200, 0, 0, 1.0);
+    border: 0.1em solid rgba(200, 0, 0, 1.0);
     border-radius: 100%;
     background-color: rgba(200, 0, 0, 1.0);
     cursor: pointer;
     z-index: 1;
+    overflow: hidden;
+    transition: width 1s, height 1s, font-size 1s ease-in-out;
     /* transform:translate(-50%,-50%); */
     /* box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12); */
 }
@@ -51,38 +53,45 @@ body{
 
 .menu:hover {
     background-color: rgb(255, 0, 0);
+    width: 7em;
+    height: 7em;
+    /* transform: scale(1.2); */
 }
 
+
+.menu:hover .menuIcon{
+    font-size: 3em;
+}
 
 .menu:hover h3{
-    color: rgb(255, 255, 255);
-}
-
-.pageLogo{
-    width: 168px;
-    height: 168px;
-}
-
-
-
+    
+} 
 
 
 .menuIcon{
     font-size: 2em;
     color: rgb(200, 200, 200);
-    /* line-height: 50px; */
     text-align: center;
 }
 
 .menus h3{
     position: relative;
     width: 100%;
-    line-height: 25px;
+    font-size: 1.2em;
     text-align: center;
     color: rgb(200, 200, 200);
     font-weight: 500;
 }
 
+
+
+
+
+
+.pageLogo{
+    width: 168px;
+    height: 168px;
+}
 
 
 

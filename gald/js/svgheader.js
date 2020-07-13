@@ -141,11 +141,15 @@ window.addEventListener("scroll", function (e) {
 var clipImg = document.querySelectorAll(".clipImg")
 var svgheader = document.getElementById("svgheader")
 
+var mousex = 0;
+var mousey = 0;
+
+
 svgheader.addEventListener('mousemove', function (event) {
 
 
-    var mousex = event.offsetX - document.body.clientWidth / 2;
-    var mousey = event.offsetY - window.innerHeight / 2;
+    mousex = event.offsetX - document.body.clientWidth / 2;
+    mousey = event.offsetY - window.innerHeight / 2;
 
     poselevel01 = clipImg[2].getAttribute("x")
 
@@ -217,10 +221,13 @@ var maskimgpage = document.querySelector(".maskimgpage")
 
 navmenus.forEach(function (item, index) {
 
-    item.addEventListener('click', function (el) {
+    item.addEventListener('click', function (event) {
         togglePageDown()
         pages[index].classList.toggle("pagedown");
     })
+    item.addEventListener('mouseover', function (event) {
+        // console.log(item.classList)
+    },false)
 
 })
 
