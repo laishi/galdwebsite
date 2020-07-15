@@ -25,7 +25,6 @@ function toggleOpen() {
     this.children[0].children[1].style.backgroundColor = "rgba(222, 222, 222, 0.3)"
     this.children[0].children[1].style.color = "rgba(22, 22, 22, 1.0)"
     transitionend = false
-    console.log("clicked " + transitionend);
   }
 
 
@@ -34,8 +33,8 @@ function toggleOpen() {
 
 
 function toggleActive(event) {
-	if (event.propertyName.includes('transform')) {
-    
+	if (event.propertyName.includes('transform') && sourceCardImg) {
+    // sourceCardImg.src = sourceCardsrc 
   } 
 
 }
@@ -44,9 +43,14 @@ function toggleActive(event) {
 
 cards.forEach(card => {
 	// On click, toggle open
-	card.addEventListener('click', toggleOpen)
+	card.addEventListener('click', toggleOpen, false)
 	card.addEventListener('transitionend', toggleActive)
 })
+
+
+
+
+
 
 
 

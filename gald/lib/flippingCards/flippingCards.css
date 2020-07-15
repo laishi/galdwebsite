@@ -37,7 +37,7 @@
 
 
 .flipCard {
-    width: calc(20% - 2rem);
+    width: calc(20% - 0.5rem);
     margin: 10px auto;
     cursor: pointer;
     /* overflow: hidden; */
@@ -86,7 +86,7 @@
 
 .front,
 .back {
-    background-size: cover;
+    background-size: contain;
     background-position: center;
     -webkit-transition: -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
     transition: -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);

@@ -133,17 +133,95 @@ body{
 
 
 
-.card:hover .card__img:nth-child(2) {
-    opacity: 0;
-    transform: scale(1.5);
-}
 
 .card:hover .card__img:nth-child(1) {    
     opacity: 1;
     transform: scale(1.2);
 }
 
-  
+
+.card:hover .card__img:nth-child(2) {
+    opacity: 0;
+    transform: scale(1.5);
+}
+
+.card:hover .card__img:nth-child(3) {
+    opacity: 0;
+    transform: scale(1.5);
+}
+
+.card:hover .card__img:nth-child(3) {
+    opacity: 0;
+    transform: scale(1.5);
+}
+
+.card:hover .card__img:nth-child(4) {
+    opacity: 0;
+    transform: scale(1.5);
+}
+.card:hover .card__img:nth-child(5) {
+    opacity: 0;
+    transform: scale(1.5);
+}
+
+
+
+
+
+
+.girdImgs{
+    position: relative;
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+    height: 100%;
+}
+
+.imgDots{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 38px;
+    bottom: 19px;
+    /* background-color: rgba(220, 37, 37, 0.81); */
+    text-align: center;
+    margin: 0 auto;
+}
+.imgDot{
+    position: relative;
+    /* background-image: url(); */
+    background-position: center;
+    background-size: cover;
+    background-color: aliceblue;
+    border: 1px solid white;
+    width:38px;
+    height:38px;
+    float: left;
+
+    border-radius: 100%;
+    margin: 0 3px;
+    opacity: 0.8;
+
+    transition: transform 0.3s, opacity 0.5s;
+}
+.card--expanded .imgDot{
+    width:60px;
+    height:60px;
+}
+
+.card--expanded .imgDots{
+    height: 65px;
+    bottom: 65px;
+}
+
+
+
+.imgDot:hover{
+    /* transform: scale(2); */
+    transform: translateY(-50%);
+    opacity: 1;
+}
 
 
 
