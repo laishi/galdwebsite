@@ -70,8 +70,8 @@ function cardImgCenter(params) {
 
 }
 
-var sourceCardsrc
-var sourceCardImg
+// var sourceCardsrc
+// var sourceCardImg
 
 
 
@@ -97,26 +97,45 @@ function creatImgDots(params) {
             imgDot.classList.add("imgDot")           
 
             imgDots.append(imgDot)
-            var dotImg = gridImg[i].src.replace("small121x75", "middle1024x735")     
+
+
+
+            
+            var dotImg = gridImg[i].src  
             imgDot.style.backgroundImage = "url(" + dotImg + ")"
 
             imgDot.addEventListener('click', function (event) {
                 event.stopPropagation()
 
-                dotbgimg = this.style.backgroundImage 
-                sourceCardImg = this.parentElement.parentElement.children[0].children[0]
-                sourceCardsrc = this.parentElement.parentElement.children[0].children[0].src
+                var cardSliderImgs = this.parentElement.parentElement.children[0]                
+                var cardSliderImg = cardSliderImgs.children
 
-                sliderimgchange = sourceCardImg   
-                sliderimgchange.src = dotbgimg.split('"')[1].replace("small121x75", "large1920x1190")     
-                
-                if (sourceCardImg) {
-    
-                    sourceCardImg.addEventListener('transitionend', function () {
-                        sourceCardImg.src = sourceCardsrc        
-                    })
-                    
+                for (let index = 0; index < cardSliderImg.length; index++) {
+                    var element = cardSliderImg[index];
+                    element.style.opacity = 0                    
                 }
+
+                
+                dotbgimg = this.style.backgroundImage.replace("small121x75", "middle1024x735")   
+                console.log(dotbgimg)
+
+                cardSliderImgs.style.backgroundImage = dotbgimg
+
+
+
+                // sourceCardImg = this.parentElement.parentElement.children[0].children[0]
+                // sourceCardsrc = this.parentElement.parentElement.children[0].children[0].src
+
+                // sliderimgchange = sourceCardImg   
+                // sliderimgchange.src = dotbgimg.split('"')[1].replace("small121x75", "large1920x1190")     
+                
+                // if (sourceCardImg) {
+    
+                //     sourceCardImg.addEventListener('transitionend', function () {
+                //         sourceCardImg.src = sourceCardsrc        
+                //     })
+                    
+                // }
 
 
             }, false)

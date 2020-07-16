@@ -5,6 +5,7 @@
   grid-auto-rows: 13.4rem;
   grid-gap: 1rem;
   grid-auto-flow: dense;
+  /* padding-bottom: 100vh; */
 }
 
 .grid--big-columns {

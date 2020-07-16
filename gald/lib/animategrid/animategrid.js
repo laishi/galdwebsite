@@ -33,7 +33,7 @@ function toggleOpen() {
 
 
 function toggleActive(event) {
-	if (event.propertyName.includes('transform') && sourceCardImg) {
+	if (event.propertyName.includes('transform')) {
     // sourceCardImg.src = sourceCardsrc 
   } 
 
@@ -75,15 +75,21 @@ Promise.all([...Array(10).keys()]).then(() => {
 });
 
 
+var prePos = 0;
+
 window.addEventListener("scroll", function (e) {
 
+  var scrollPos = window.scrollY || window.pageYOffset // pageYOffset for ie
+
   var cadExpanded = document.querySelector(".card--expanded")
-  if (cadExpanded && transitionend) {
+  if (cadExpanded && transitionend && scrollPos < prePos) {
     cadExpanded.classList.remove('card--expanded') 
     cadExpanded = null
     transitionend = false
     console.log("END scroll:" + transitionend)
   }
+
+  prePos = scrollPos
 })
 
 
