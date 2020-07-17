@@ -4,6 +4,8 @@
 var svgviewbox = document.getElementById("svgviewbox");
 var curveBg = document.getElementById("curveBg");
 var navPath = document.getElementById("navPath");
+var textPath = document.getElementById("textPath");
+
 
 var menuhome = document.querySelector(".menuhome")
 var menuprojects = document.querySelector(".menuprojects")
@@ -29,9 +31,9 @@ function setpath(el) {
 
 function setNavPath(el) {
     el.setAttribute("stroke-width", strokeWidth);
-    el.setAttribute("stroke-linecap", "square");
-    el.setAttribute("d",
-        curveBg.getAttribute("d").split(" V")[0])
+    el.setAttribute("stroke-linecap", "square");    
+    el.setAttribute("d", curveBg.getAttribute("d").split(" V")[0])
+        
     // el.setAttribute("transform", "translate(0, " + -strokeWidth / 1 + ")");
 }
 
@@ -52,107 +54,8 @@ function navToCurve(el, navSpace) {
 }
 
 
-function cardImgCenter(params) {
-
-    var cardW = document.querySelector(".card").clientWidth
-    var cardH = document.querySelector(".card").clientHeight
-    var cardimg = document.querySelectorAll(".card__img")
-    var cardimgW = document.querySelector(".card__img").clientWidth
-    var cardimgH = document.querySelector(".card__img").clientHeight
-
-    for (let index = 0; index < cardimg.length; index++) {
-        var element = cardimg[index];
-
-        if (cardH < cardimgH) {
-            element.style.top = (cardimgH - cardH) / -2 + "px"
-        }
-    }
-
-}
-
-// var sourceCardsrc
-// var sourceCardImg
 
 
-
-
-
-function creatImgDots(params) {
-    var girdImgs = document.querySelectorAll(".girdImgs")
-
-    
-
-    for (let index = 0; index < girdImgs.length; index++) {
-        var element = girdImgs[index];
-        var gridImg = element.children[0].children
-
-        var imgDots = document.createElement("div")
-        imgDots.classList.add("imgDots")
-
-
-
-
-        for (let i = 0; i < gridImg.length; i++) {
-            var imgDot = document.createElement("div")
-            imgDot.classList.add("imgDot")           
-
-            imgDots.append(imgDot)
-
-
-
-            
-            var dotImg = gridImg[i].src  
-            imgDot.style.backgroundImage = "url(" + dotImg + ")"
-
-            imgDot.addEventListener('click', function (event) {
-                event.stopPropagation()
-
-                var cardSliderImgs = this.parentElement.parentElement.children[0]                
-                var cardSliderImg = cardSliderImgs.children
-
-                for (let index = 0; index < cardSliderImg.length; index++) {
-                    var element = cardSliderImg[index];
-                    element.style.opacity = 0                    
-                }
-
-                
-                dotbgimg = this.style.backgroundImage.replace("small121x75", "middle1024x735")   
-                console.log(dotbgimg)
-
-                cardSliderImgs.style.backgroundImage = dotbgimg
-
-
-
-                // sourceCardImg = this.parentElement.parentElement.children[0].children[0]
-                // sourceCardsrc = this.parentElement.parentElement.children[0].children[0].src
-
-                // sliderimgchange = sourceCardImg   
-                // sliderimgchange.src = dotbgimg.split('"')[1].replace("small121x75", "large1920x1190")     
-                
-                // if (sourceCardImg) {
-    
-                //     sourceCardImg.addEventListener('transitionend', function () {
-                //         sourceCardImg.src = sourceCardsrc        
-                //     })
-                    
-                // }
-
-
-            }, false)
-
-
-     
-        }
-
-        element.append(imgDots)        
-    }
-
-
-
-    // var imgDots = document.createElement("div")
-    // imgDots.classList.add("imgDots")
-
-}
 
 
 
@@ -176,8 +79,7 @@ setpath(curveBg)
 setNavPath(navPath)
 
 navToCurve(menus)
-cardImgCenter()
-creatImgDots()
+
 
 
 
@@ -192,30 +94,11 @@ window.onresize = reportWindowSize;
 
 function reportWindowSize() {
 
-
-
-    // winw = document.body.clientWidth
-
     setviewbox(svgviewbox)
     setpath(curveBg)
     setNavPath(navPath)
     navToCurve(menus)
-    cardImgCenter()
 }
-
-
-
-// .card__img
-
-//     top: -50px;
-
-
-
-
-
-
-
-
 
 
 
@@ -352,14 +235,46 @@ navmenus.forEach(function (item, index) {
     })
 
 
-    item.addEventListener('mouseover', function (event) {
-        // console.log(item.classList)
-    }, false)
+    item.addEventListener('mouseover', changePathText, false)
 
 })
 
 
+function changePathText() {
+    var textPath = document.querySelector(".textPath")
+    var text = textPath.innerHTML
 
+    var classList = this.classList.value
+
+    console.log(classList.value)
+    console.log(typeof("classList"))
+
+
+    if (classList.includes("menuprojects")) {
+        
+        textPath.innerHTML = "建筑夜景照明 / 城市景观照明 / 道路桥梁照明 / 商业家居照明 / 广场古建照明 / 迎春灯饰"
+    }
+
+    if (classList.includes("menuserver")) {
+        
+        textPath.innerHTML = "用专业水平打动您 用敬业态度感动您"
+    }
+
+    if (classList.includes("menuhome")) {
+        
+        textPath.innerHTML = "重庆光爱照明设计"
+    }
+
+    if (classList.includes("menuflow")) {
+        
+        textPath.innerHTML = "合理有序的流程设计  满足施工效益最大化"
+    }
+
+    if (classList.includes("menuabout")) {
+        
+        textPath.innerHTML = "Name: 刘建   TEL: 13640566324   EMail: 504677424@qq.com"
+    }    
+}
 
 
 
@@ -375,18 +290,4 @@ pages.forEach(page => {
 
 function pageend(params) {
 }
-
-// if (event.propertyName.includes('transform')) {
-//     // Toggle 'active' class
-//     this.classList.toggle('active')		
-// }	
-
-
-
-// var cards = document.querySelectorAll(".card")
-
-
-
-
-
 

@@ -50,7 +50,9 @@ body{
     /* box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12); */
 }
 
-
+.textInfo{
+    letter-spacing: 10;
+}
 
 
 
@@ -117,6 +119,7 @@ body{
     opacity: 1;
     background-position: center;
     background-size: cover;
+    /* background-image: url("../img/gald-logo-text512.png"); */
 
 }
 
@@ -125,25 +128,38 @@ body{
 .cardSlider .card__img{
     position: absolute;
     width: 100%;
-    top: 0;
+    height: 100%;
+    /* top: 0; */
     left: 0;
+    right: 0;
     background-color: rgb(66, 66, 66);
     opacity: 1;
-    top: 0;
-    transform: scale(1.1);
+
+    background-position: center;
+    background-size: cover;
+    background-image: url("../img/gald-logo-text512.png");
+
+    
     transition: transform 1s ease-in-out, opacity 1s;
 }
 
+.cardSlider .card__img:hover{
 
+    opacity: 0;
+    transform: scale(1.1);
 
-
-.card:hover .card__img:nth-child(1) {    
-    opacity: 1;
-    transform: scale(1.2);
 }
 
 
-.card:hover .card__img:nth-child(2) {
+
+
+/* .card:hover .card__img:nth-child(1) {    
+    opacity: 1;
+    transform: scale(1.8);
+} */
+
+
+/* .card:hover .card__img:nth-child(2) {
     opacity: 0;
     transform: scale(1.5);
 }
@@ -165,7 +181,7 @@ body{
 .card:hover .card__img:nth-child(5) {
     opacity: 0;
     transform: scale(1.5);
-}
+} */
 
 
 
@@ -223,7 +239,7 @@ body{
 
 .imgDot:hover{
     /* transform: scale(2); */
-    transform: translateY(-50%);
+    transform: translateY(-51%);
     opacity: 1;
 }
 

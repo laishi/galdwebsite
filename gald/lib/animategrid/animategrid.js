@@ -157,6 +157,8 @@ window.onresize = reportWindowSize;
 
 function reportWindowSize() {
 
+
+
   // var cardHeight = card[0].offsetHeight
 
   // var cardimg = document.querySelector(".card__img")
@@ -167,7 +169,7 @@ function reportWindowSize() {
   //   cardimg.style.height = cardHeight + "px"
   // }
 
-// console.log(cardHeight)
+
 // console.log(cardimgHeight)
 
 }
