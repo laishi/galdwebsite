@@ -272,7 +272,7 @@ function changePathText() {
 
     if (classList.includes("menuabout")) {
         
-        textPath.innerHTML = "Name: 刘建   TEL: 13640566324   EMail: 504677424@qq.com"
+        textPath.innerHTML = "TEL: 13640566324   EMail: 504677424@qq.com"
     }    
 }
 
