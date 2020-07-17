@@ -278,7 +278,6 @@ function changePathText() {
 
 
 
-
 // For each panel
 pages.forEach(page => {
     // On click, toggle open
